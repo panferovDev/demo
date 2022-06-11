@@ -6,6 +6,7 @@ import {
 } from 'reactstrap';
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink as DomLink } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import { userLogOut } from '../../Redux/actions/userAction';
 
 export default function MyNav() {
@@ -15,7 +16,11 @@ export default function MyNav() {
     dispatch(userLogOut());
   };
   return (
-    <div>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 0.2 }}
+    >
       <Navbar
         color="dark"
         expand="md"
@@ -34,15 +39,20 @@ export default function MyNav() {
                 Components
               </NavLink>
             </NavItem>
+            <NavItem className="nav-link">
+              <DomLink to="/words">
+                words
+              </DomLink>
+            </NavItem>
             {!user.name
             && (
             <>
-              <NavItem>
+              <NavItem className="nav-link">
                 <DomLink to="/signin">
                   signin
                 </DomLink>
               </NavItem>
-              <NavItem>
+              <NavItem className="nav-link">
                 <DomLink to="/signup">
                   signup
                 </DomLink>
@@ -78,6 +88,6 @@ export default function MyNav() {
           </NavbarText>
         </Collapse>
       </Navbar>
-    </div>
+    </motion.div>
   );
 }

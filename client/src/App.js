@@ -11,6 +11,7 @@ import { checkUser } from './Redux/actions/userAction';
 import Main from './Components/Main/Main';
 import AuthRouter from './Components/AuthRouter/AuthRouter';
 import MySpin from './Components/MySpin/MySpin';
+import Words from './Components/Words/Words';
 
 function App() {
   const { user } = useSelector((state) => state);
@@ -44,6 +45,7 @@ function App() {
                   </AuthRouter>
         )}
               />
+              <Route path="/words" element={<Words />} />
             </Routes>
           </>
         )}

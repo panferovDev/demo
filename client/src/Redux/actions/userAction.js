@@ -13,9 +13,11 @@ export const regUser = (value) => (dispatch) => {
 };
 
 export const checkUser = () => (dispatch) => {
-  axios.post('/user/check')
-    .then((response) => dispatch(setUser(response.data)))
-    .catch((err) => dispatch(setUser({})));
+  setTimeout(() => {
+    axios.post('/user/check')
+      .then((response) => dispatch(setUser(response.data)))
+      .catch((err) => dispatch(setUser({})));
+  }, 1000);
 };
 
 export const userLogOut = () => (dispatch) => {

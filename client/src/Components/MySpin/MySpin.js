@@ -7,6 +7,7 @@ function MySpin() {
       <Spinner
         color="primary"
         type="grow"
+        size="lg"
       />
     </Row>
   );

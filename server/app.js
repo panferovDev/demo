@@ -8,6 +8,7 @@ const PORT = 3001;
 
 const userRouter = require('./routes/userRouter');
 const postRouter = require('./routes/postRouter');
+const wordsRouter = require('./routes/wordsRouter');
 
 const sessionConfig = {
   store: new FileStore(),
@@ -33,6 +34,7 @@ app.use(session(sessionConfig));
 
 app.use('/user', userRouter);
 app.use('/post', postRouter);
+app.use('/words', wordsRouter);
 
 app.listen(PORT, () => {
   console.log('Server start on ', PORT);
