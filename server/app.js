@@ -2,6 +2,7 @@ const express = require('express');
 const session = require('express-session');
 const FileStore = require('session-file-store')(session);
 const cors = require('cors');
+const morgan = require('morgan');
 
 const PORT = 3001;
 
@@ -22,8 +23,9 @@ const sessionConfig = {
 };
 
 const app = express();
+app.use(morgan('dev'));
 // для возможности получать cookies
-app.use(cors({ credentials: true, origin: 'http://localhost:3000' }));
+app.use(cors({ credentials: true, origin: 'http://localhost:3002' }));
 app.use(express.static(`${__dirname}/public`));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());

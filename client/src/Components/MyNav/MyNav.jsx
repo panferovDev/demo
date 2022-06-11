@@ -4,8 +4,16 @@ import {
   Nav, Navbar, NavbarBrand, NavbarText,
   NavItem, NavLink, UncontrolledDropdown,
 } from 'reactstrap';
+import { useSelector, useDispatch } from 'react-redux';
+import { NavLink as DomLink } from 'react-router-dom';
+import { userLogOut } from '../../Redux/actions/userAction';
 
 export default function MyNav() {
+  const { user } = useSelector((state) => state);
+  const dispatch = useDispatch();
+  const logOutHAndler = () => {
+    dispatch(userLogOut());
+  };
   return (
     <div>
       <Navbar
@@ -26,11 +34,21 @@ export default function MyNav() {
                 Components
               </NavLink>
             </NavItem>
-            <NavItem>
-              <NavLink href="https://github.com/reactstrap/reactstrap">
-                GitHub
-              </NavLink>
-            </NavItem>
+            {!user.name
+            && (
+            <>
+              <NavItem>
+                <DomLink to="/signin">
+                  signin
+                </DomLink>
+              </NavItem>
+              <NavItem>
+                <DomLink to="/signup">
+                  signup
+                </DomLink>
+              </NavItem>
+            </>
+            )}
             <UncontrolledDropdown
               inNavbar
               nav
@@ -55,8 +73,8 @@ export default function MyNav() {
               </DropdownMenu>
             </UncontrolledDropdown>
           </Nav>
-          <NavbarText>
-            Simple Text
+          <NavbarText onClick={logOutHAndler}>
+            {user.name ? `Hi, ${user.name}` : 'Login please'}
           </NavbarText>
         </Collapse>
       </Navbar>
