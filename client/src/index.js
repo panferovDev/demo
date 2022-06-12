@@ -11,6 +11,7 @@ import storeR from './Redux/store';
 const history = createBrowserHistory();
 axios.defaults.baseURL = process.env.REACT_APP_URL;
 axios.defaults.withCredentials = true;
+
 axios.interceptors.response.use(undefined, (err) => {
   const { data, status, config } = err.response;
   console.log('interceptors --->', status);
@@ -20,7 +21,6 @@ axios.interceptors.response.use(undefined, (err) => {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <HistoryRouter history={history}>
-
     <Provider store={storeR}>
       <App />
     </Provider>

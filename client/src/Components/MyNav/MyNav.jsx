@@ -69,7 +69,7 @@ export default function MyNav() {
               >
                 Options
               </DropdownToggle>
-              <DropdownMenu right>
+              <DropdownMenu end>
                 <DropdownItem>
                   Option 1
                 </DropdownItem>

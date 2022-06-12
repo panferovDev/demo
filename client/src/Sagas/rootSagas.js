@@ -1,8 +1,6 @@
-import { all } from 'redux-saga/effects';
+import { all, fork } from 'redux-saga/effects';
 import wordSaga from './wordSaga';
 
 export default function* rootSaga() {
-  yield all([
-    wordSaga(),
-  ]);
+  yield fork(wordSaga);
 }
